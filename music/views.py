@@ -4,9 +4,18 @@ from . import views
 # Create your views here.
 from django.http import HttpResponse
 from .models import Album, Song
+from django.template import RequestContext, loader
 
 def index(request):
-    return HttpResponse("<h1>This is the music app homepage .</h1>")
+    album_list = Album.objects.all()
+
+    template = loader.get_template('music/index.html')
+    context = RequestContext(request, {'album_list': album_list,})
+    # the context is a dictionary mapping template variable names to python objects
+    return HttpResponse(template.render(context))
+
+
+
 
 def details(request , albums_id):
     try:

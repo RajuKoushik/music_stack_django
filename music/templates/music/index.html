@@ -1,0 +1,11 @@
+<h1>These are the available Albums</h1>
+
+
+{% for album in album_list %}
+    <li><a href="{% url 'details' album.id %}">{{ album.album_title }}</a></li>
+
+{% endfor %}
+
+
+
+
