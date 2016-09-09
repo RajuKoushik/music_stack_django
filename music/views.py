@@ -10,10 +10,10 @@ def index(request):
 
 def details(request , albums_id):
     try:
-        question = Album.objects.get(pk=albums_id)
+        album = Album.objects.get(pk=albums_id)
     except Album.DoesNotExist:
         raise Http404("Question does not exist")
-    return render(request, 'polls/details.html', {'question': question})
+    return render(request, 'music/details.html', {'album': album})
 
 
 
